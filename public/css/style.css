@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  body{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   
+  }
+
+  .bg-gradient{
+    background: radial-gradient(33.16% 103.23% at -3.17% 93.00%, rgba(9, 9, 9, 0.20) 0%, rgba(156, 156, 156, 0.20) 100%), radial-gradient(39.37% 138.27% at 104.42% 8.75%, #9C9C9C 0%, rgba(9, 9, 9, 0.00) 100%), #090909;   
+    background-repeat: no-repeat;
+  }
+  
+  header{
+    width:100%;
+    backdrop-filter: blur(10px);
+  }
+
+  .bg-black{
+    background-color:#090909;
+  }
+  .text-black{
+    color:#090909;
+  }
+
+  .bg-white{
+    background-color:#FEFEFE;
+  }
+  .text-white{
+    color:#FEFEFE;
+  }
+  
+  .title{ 
+   font-family: 'Archivo Black', sans-serif;
+   font-weight: 400;
+   font-size: 2.5rem;
+  }
+  
+  .form-box{
+    border-radius: 20px;
+    border: 1px solid rgba(254, 254, 254, 0.10);
+    background: linear-gradient(331deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
+    box-shadow: 0px 4px 24px 1px rgba(254, 254, 254, 0.10);
+    backdrop-filter: blur(15px);
+  }  
+  
+  .label{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   font-family: 'Archivo Black', sans-serif;
+   font-size: 1.375rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+  }
+  
+  .box{
+   font-family: 'Poppins', sans-serif;
+   font-size: 22px;
+   font-style: italic;
+   font-weight: 300;
+   line-height: normal;
+   border-radius: 30px;
+   border: 1px solid rgba(254, 254, 254, 0.50);
+   backdrop-filter: blur(10px);
+  }
+
+
+  
+  #form-box input::placeholder{
+    color: #FEFEFE;
+  }
+  
+  #form-box select{
+    color: #FEFEFE;
+  }
+  
+  select > option{
+    background-color:#9C9C9C;
+    color: #FEFEFE;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+  }
+  
+  .signature{
+    max-width: 900px;
+    max-height:450px;
+    min-width: 800px;
+    min-height: 350px;
+    gap:2rem;
+    border: 1px solid rgba(254, 254, 254, 0.10);
+    background: radial-gradient(33.90% 146.69% at 0% 0%, rgba(9, 9, 9, 0.20) 0%, rgba(156, 156, 156, 0.20) 100%), radial-gradient(27.29% 119.14% at 111.04% -0.00%, rgba(156, 156, 156, 0.30) 0%, rgba(9, 9, 9, 0.00) 100%), linear-gradient(0deg, #090909 0%, #090909 100%), rgba(9, 9, 9, 0.50);    margin: 0;
+    padding: 0;
+}
+
+  
+  .info{
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .ass{
+    font-family: 'Archivo Black', sans-serif;
+  }
+
