@@ -174,16 +174,16 @@
             <form id="form-box" class="row g-3 form-box p-3">
                 <div class="col-12">
                     <label for="login" class="form-label label text-white">Login</label>
-                    <input type="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
+                    <input type="login" name="login" id="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
                 </div>
             </form>
         </section>
 
-        <section class="container m-5" style="display: none">
+        <section id="form-ass" class="container m-5">
             <form id="form-box" class="row g-3 form-box p-3">
                 <div class="col-12">
                     <label for="fullname" class="form-label label text-white">Nome Completo</label>
-                    <input type="text" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="fullname" placeholder="Nome completo">
+                    <input type="fullname" name="fullname" id="fullname" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="fullname" placeholder="Nome completo">
                 </div>
                 <div class="col-md-6">
                     <label for="cellphone" class="form-label label text-white">Celular</label>
@@ -195,19 +195,19 @@
                 </div>
                 <div class="col-md-6">
                     <label for="department" class="form-label label text-white">Setor</label>
-                    <select id="department" class="form-select box bg-transparent focus-ring focus-ring-white">
+                    <select id="department" name="department" class="form-select box bg-transparent focus-ring focus-ring-white">
                         <option selected>Setor...</option>
-                        <option>Suporte TI</option>
-                        <option>Infraestrutura</option>
+                        <option value="suporte">Suporte TI</option>
+                        <option value="infra">Infraestrutura</option>
                     </select>
                 </div>
                 <div class="col-md-6 text-white">
                     <label for="company" class="form-label label">Empresa</label>
-                    <select id="company" class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
+                    <select id="company" name="company" class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
                         <option selected>Empresa...</option>
-                        <option>RM</option>
-                        <option>RMED</option>
-                        <option>MEDERI</option>
+                        <option value="rm">RM</option>
+                        <option value="rmed">RMED</option>
+                        <option value="mederi">MEDERI</option>
                     </select>
                 </div>
 
@@ -260,19 +260,19 @@
                 <h1 id="assname" class="assname text-white">MEDGRUPO</h1>
             </div>
             <div id="ass" class="info col text-white text-wrap">
-                <h3 class="text-uppercase ass">Emanoely M dos Santos</h3>
-                <h4 class="fw-semibold">Suporte TI</h4>
-                <h4 class="fw-light">emanoely.santos@rmcursosmedicos.com.br</h4>
-                <h4 class="fw-light">55 021 912345678</h4>
-                <h4 class="fw-light">55 021 12345678</h4>
-                <h4 class="fw-light">Av. das Américas , 3500, bl.Londres, sl 706, Barra da Tijuca | RJ | CEP 22640-102</h4>
+                <h3 id="fullname" class="text-uppercase ass"></h3>
+                <h4 id="email" class="fw-semibold"></h4>
+                <h4 id="department" class="fw-light"></h4>
+                <h4 id="company" class="fw-light"></h4>
+                <h4 class="fw-light"></h4>
+                <h4 class="fw-light"></h4>
             </div>
         </section>
 
             {{-- <img id="imagemGerada" alt="Imagem gerada" style="display: none;"> --}}
 
 
-        <div class="container m-5 " style="display: none">
+        <div class="container m-5 ">
             <button class="justify-content-end btn focus-ring focus-ring-light btn-outline-light" onclick="downloadImage()">Baixar Assinatura</button>
         </div>
 

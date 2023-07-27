@@ -1,0 +1,65 @@
+//instalar o pacote Adldap2 via Composer usando o seguinte comando
+composer require adldap2/adldap2
+
+//Configurar o arquivo "config/adldap.php"
+//Crie um arquivo chamado "adldap.php" dentro do diretório "config" do seu projeto Laravel
+return [
+    'default' => [
+        'auto_connect' => env('ADLDAP_AUTO_CONNECT', true),
+        'connection' => Adldap\Connections\Ldap::class,
+        'settings' => [
+            'schema' => Adldap\Schemas\ActiveDirectory::class,
+            'account_prefix' => '',
+            'account_suffix' => '@seu-dominio.local', // Substitua pelo seu domínio do AD
+            'hosts' => ['dc1.seu-dominio.local', 'dc2.seu-dominio.local'], // Adicione os controladores de domínio do AD
+            'port' => 389, // A porta padrão do AD é 389, mas pode variar de acordo com a configuração do seu ambiente
+            'timeout' => 5,
+            'base_dn' => 'dc=seu-dominio,dc=local', // Substitua pelo DN do seu domínio
+            'username' => 'usuario-admin', // Substitua pelo nome de usuário com privilégios de busca no AD
+            'password' => 'senha-admin', // Substitua pela senha do usuário administrador do AD
+            'follow_referrals' => false,
+        ],
+    ],
+];
+
+//Certifique-se de ajustar as configurações de acordo com a sua configuração de domínio e controladores de domínio do AD
+
+//Utilizar o Adldap2 para buscar usuários do AD
+//Com o Adldap2 configurado, você pode usá-lo para buscar usuários no Active Directory.Em um controller do Laravel
+
+use Adldap\Laravel\Facades\Adldap;
+
+class UserController extends Controller
+{
+    public function getUsersFromAD()
+    {
+        // Realiza a busca de todos os usuários no AD
+        $users = Adldap::search()->users()->get();
+
+        // Faça algo com a lista de usuários, por exemplo, retornar uma view
+        return view('users', compact('users'));
+    }
+}
+//Este exemplo busca todos os usuários do Active Directory e os retorna para uma view chamada "users.blade.php"
+
+//Consulta de um usuário no Active Directory filtrando pelo login (também conhecido como "samaccountname")
+
+use Adldap\Laravel\Facades\Adldap;
+
+class UserController extends Controller
+{
+    public function getUserByLogin($login)
+    {
+        // Realiza a busca do usuário no AD pelo login
+        $user = Adldap::search()->users()->where('samaccountname', '=', $login)->first();
+
+        if ($user) {
+            // O usuário foi encontrado, faça algo com as informações dele
+            return view('user_profile', compact('user'));
+        } else {
+            // O usuário não foi encontrado, retorne uma mensagem de erro ou redirecione para uma página adequada
+            return redirect()->route('usuarios.index')->with('error', 'Usuário não encontrado no AD.');
+        }
+    }
+}
+

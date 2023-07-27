@@ -97,8 +97,40 @@ function downloadImage() {
     
     // Criar um link para download da imagem
     const link = document.createElement('a');
-    link.href = imageUrl;
+    link.href = imageUrl;fullname
     link.download = 'assinatura.png';
     link.click();
   });
 }
+
+
+
+    // document.getElementById('form-ass').addEventListener('submit', function(event) {
+    //   event.preventDefault();
+
+    //   // Obter os valores dos campos do formulário
+    //   const fullname = document.getElementById('fullname').value;
+    //   const email = document.getElementById('email').value;
+    //   const company = document.getElementById('company').value;
+    //   const department = document.getElementById('department').value;
+
+    //   document.getElementById('fullname').innerHTML = `Nome: ${fullname}`;
+    //   document.getElementById('email-info').innerHTML = `E-mail: ${email}`;
+    //   document.getElementById('company').innerHTML = `Empresa ${company}`;
+    //   document.getElementById('department').innerHTML = `Setor ${department}`;
+
+    //   // Obter a div de destino
+    //   const ass = document.getElementById('ass');
+
+    //   // Limpar o conteúdo da div antes de adicionar as novas informações
+    //   ass.innerHTML = '';
+
+    //   // Adicionar os elementos criados na div de destino
+    //   ass.appendChild(fullnameElement);
+    //   ass.appendChild(emailElement);
+    //   ass.appendChild(companyElement);
+    //   ass.appendChild(departmentElement);
+
+    //   // Exibir a div de destino após a submissão
+    //   document.getElementById('ass').style.display = 'block';
+    // });
