@@ -170,14 +170,31 @@
         
         </header>
 
-        <section id="from-search" class="container m-5">
-            <form id="form-box" class="row g-3 form-box p-3">
-                <div class="col-12">
-                    <label for="login" class="form-label label text-white">Login</label>
-                    <input type="login" name="login" id="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
-                </div>
-            </form>
-        </section>
+            <section id="from-search" class="container m-5">
+                <form id="form-box" class="row g-3 form-box p-3">
+                    <div class="col-12">
+                        <label for="login" class="form-label label text-white">Login</label>
+                        <input type="login" name="login" id="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
+                    </div>
+                </form>
+            </section>
+      
+        {{-- @if ($users)
+            <ul class="list-group">
+                <li class="list-group">ID:{{ $users->id }}</li>
+                <li class="list-group">Nome:{{ $users->samaccountname }}</li>
+                <li class="list-group">Email:{{ $users->email }}</li>
+            </ul>
+        @else
+            <p>Não encontrado</p>
+        @endif --}}
+                
+
+
+
+
+
+
 
         <section id="form-ass" class="container m-5">
             <form id="form-box" class="row g-3 form-box p-3">
