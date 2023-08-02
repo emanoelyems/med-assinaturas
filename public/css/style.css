@@ -106,3 +106,20 @@
     font-family: 'Archivo Black', sans-serif;
   }
 
+ .txt-rmed{
+  display: flex;
+  width: 310px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  color: #D4232C;
+  /* font-family: ; */
+  }
+
+  #rmed{
+  width: 600px;
+  height: 199px;
+  /* background-image: url('../../resources/imgs/ASE_BASE_RMED_2019.jpg'); */
+  background-color: aqua;
+  }

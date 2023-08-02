@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\LdapController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,22 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
-    return view('homes');
+    return view('layout');
 });
 
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/layout', function () {
+    return view('signatures.rmed');
+});
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+Route::get('/data', [LdapController::class,'data']);
+
+// Route::redirect('/layout', '/signatures/rmed');
