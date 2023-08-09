@@ -171,11 +171,12 @@
         </header>
 
             <section id="from-search" class="container m-5">
-                <form id="form-box" class="row g-3 form-box p-3">
+                <form id="form-box" class="row g-3 form-box p-3" method="GET" action="{{ URL::to('/testar-ldap') }}">
                     <div class="col-12">
                         <label for="login" class="form-label label text-white">Login</label>
                         <input type="login" name="login" id="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
                     </div>
+                    <button type="submit" class="btn btn-success">Enviar</button>
                 </form>
             </section>
 

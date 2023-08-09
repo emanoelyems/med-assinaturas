@@ -8,7 +8,7 @@
         <form id="form-box" class="row g-3 form-box p-3">
             <div class="col-12">
                 <label for="fullname" class="form-label label text-white">Nome Completo</label>
-                <input type="fullname" name="fullname" id="fullname"
+                <input type="fullname" value="{{ $userAd['fullname'] }}" name="fullname" id="fullname"
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="fullname"
                     placeholder="Nome completo">
             </div>
@@ -24,22 +24,29 @@
             </div>
             <div class="col-md-6">
                 <label for="department" class="form-label label text-white">Setor</label>
-                <select id="department" name="department"
+                {{-- <select id="department" value="{{ $userAd['department'] }}" name="department"
                     class="form-select box bg-transparent focus-ring focus-ring-white">
                     <option selected>Setor...</option>
                     <option value="suporte">Suporte TI</option>
                     <option value="infra">Infraestrutura</option>
-                </select>
+                </select> --}}
+                <input type="department" value="{{ $userAd['department'] }}" name="department" id="department"
+                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="department"
+                    placeholder="department">
             </div>
             <div class="col-md-6 text-white">
                 <label for="company" class="form-label label">Empresa</label>
-                <select id="company" name="company"
+                {{-- <select id="company" name="company"
                     class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
                     <option selected>Empresa...</option>
                     <option value="rm">RM</option>
                     <option value="rmed">RMED</option>
                     <option value="mederi">MEDERI</option>
-                </select>
+                </select> --}}
+
+                <input type="company" value="{{ $userAd['company'] }}" name="company" id="company"
+                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="company"
+                    placeholder="company">
             </div>
 
             <div class="col-12 text-white">

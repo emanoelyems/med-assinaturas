@@ -77,4 +77,14 @@ return [
         'driver' => env('CACHE_DRIVER', 'file'),
     ],
 
+    'providers' => [
+        // ...
+        Adldap\Laravel\AdldapServiceProvider::class,
+    ],
+    
+    'aliases' => [
+        // ...
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+    ],
+
 ];

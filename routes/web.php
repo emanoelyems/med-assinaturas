@@ -1,6 +1,7 @@
 <?php
-
+use LdapRecord\Connection;
 use App\Http\Controllers\LdapController;
+use App\Http\Controllers\teste2Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +32,8 @@ Route::get('/form', function () {
 });
 
 Route::get('/data', [LdapController::class,'data']);
+
+// Route::get('/testar-ldap', [LdapController::class,'testar-ldap']);
+Route::get('/testar-ldap', [teste2Controller::class,'teste99']);
 
 // Route::redirect('/layout', '/signatures/rmed');
