@@ -5,7 +5,8 @@
 @section('content')
 
     <section id="form-ass" class="container m-5">
-        <form id="form-box" class="row g-3 form-box p-3">
+        <form id="form-box" class="row g-3 form-box p-3" method="POST" action="/search-result">
+            @csrf
             <div class="col-12">
                 <label for="fullname" class="form-label label text-white">Nome Completo</label>
                 <input type="fullname" value="{{ $userAd['fullname'] }}" name="fullname" id="fullname"
@@ -14,7 +15,7 @@
             </div>
             <div class="col-md-6">
                 <label for="cellphone" class="form-label label text-white">Celular</label>
-                <input type="text" class="form-control text-white box bg-transparent focus-ring focus-ring-white"
+                <input type="text"  class="form-control text-white box bg-transparent focus-ring focus-ring-white"
                     id="cellphone" placeholder="55 021 912345678">
             </div>
             <div class="col-md-6">
@@ -49,33 +50,28 @@
                     placeholder="company">
             </div>
 
-            <div class="col-12 text-white">
-                <div class="form-check">
-                    <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio"
-                        id="gridCheck">
-                    <label class="form-check-label label white" for="gridCheck">
-                        Assinatura Padrão
-                    </label>
-                </div>
+            <div class="form-check text-white">
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label label white" for="flexRadioDefault2">
+                    Assinatura Padrão
+                </label>
             </div>
-            <div class="col-12 text-white">
-                <div class="form-check">
-                    <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio"
-                        id="gridCheck">
-                    <label class="form-check-label label white" for="gridCheck">
-                        Assinatura para Filial
-                    </label>
-                </div>
+            <div class="form-check text-white">
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label label white" for="flexRadioDefault1">
+                    Assinatura para Filial
+                </label>
             </div>
             
+
         </form>
-        <div class="col-12">
-            <button class="btn focus-ring focus-ring-light btn-outline-light" onclick="downloadImage()">Gerar assinatura</button>
+        <div class="col-12 m-2">
+            <button class="btn focus-ring focus-ring-light btn-outline-light" type="submit" >Gerar assinatura</button>
         </div>
     </section>
 
-    {{-- <section id="signature" class="signature row justify-content-md-center align-items-center bg-black p-3 m-2">
-         primeiro layout de teste da assinatura 
+    <section id="signature" class="signature row justify-content-md-center align-items-center bg-black p-3 m-2">
+         {{-- primeiro layout de teste da assinatura  --}}
 
         <div id="asslogo" class="asslogo col-3 text-center align-middle">
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
@@ -102,23 +98,18 @@
             <h1 id="assname" class="assname text-white">MEDGRUPO</h1>
         </div>
         <div id="ass" class="info col text-white text-wrap">
-            <h3 id="fullname" class="text-uppercase ass"></h3>
-            <h4 id="email" class="fw-semibold"></h4>
-            <h4 id="department" class="fw-light"></h4>
-            <h4 id="company" class="fw-light"></h4>
-            <h4 class="fw-light"></h4>
+            <h3 id="fullname" class="text-uppercase ass"> {{ $userAd['fullname'] }} </h3>
+            <h4 id="email" class="fw-semibold"> {{ $userAd['mail'] }} </h4>
+            <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4>
+            <h4 id="company" class="fw-light">  {{ $userAd['company'] }}   </h4>
+            <h4 class="fw-light">  </h4>
             <h4 class="fw-light"></h4>
         </div>
-    </section>  --}}
+    </section> 
 
-    {{-- <div class="container m-5 ">
+    <div class="container m-5 ">
         <button class="justify-content-end btn focus-ring focus-ring-light btn-outline-light"
             onclick="downloadImage()">Baixar Assinatura</button>
-    </div> --}}
-@endsection
-
-@section('js')
-
-
+    </div>
 
 @endsection

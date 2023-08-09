@@ -1,43 +1,109 @@
 <?php
 
-use Adldap\Laravel\Facades\Adldap;
+namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use LdapRecord\Container;
+use LdapRecord\Connection;
+use Illuminate\Routing\Controller;
+use LdapRecord\Models\Entry;
 
 
-class LdapController extends BaseController
+
+class LdapController extends Controller
 {
 
-    protected $ldap;
+    private $connection;
 
     public function __construct()
     {
-        $this->ldap = Adldap::getFacadeRoot();
+        $connection = new Connection([
+            'hosts' => ['10.47.103.7'],
+            'port' => 389,
+            'base_dn' => 'OU=Medgrupo,DC=medbarra,DC=com,DC=br',
+            'username' => 'assinaturas@medbarra.com.br',
+            'password' => '!Q@W#E4r5t6y',
+        ]);
+
+        // Add the connection into the container:
+        Container::addConnection($connection);
+
+        $this->connection = $connection;
     }
 
-    public function testarLdap()
+    function userSearch(Request $request)
     {
+    
+        $name = $request->login;
+        $connection = $this->connection;
+
+        // Get all objects:
+        // $objects = Entry::get();
+
+        $results = $connection->query()->where('samaccountname', 'starts_with', $name)->first();
+
+      
+
+        $email = $results['mail'][0];
+        $parts = explode('@', $email);
+        if (count($parts) === 2) {
+            $domain = $parts[1];
+            $domainParts = explode('.', $domain);
+
+            if (count($domainParts) > 1) {
+                $company = $domainParts[0];
+            }
+        }
+
+        $department = $results['department'][0];
+
+        $parts = explode(']', $department);
+        if (count($parts) > 1) {
+            $setor = trim($parts[1]);
+        }
+
        
-        try {
-            $usuarios = $this->buscarUsuarios();
-            return view('testar-ldap', ['usuarios' => $usuarios]);
-        } catch (\Exception $e) {
-            Log::error('Erro no teste LDAP: ' . $e->getMessage());
-            return view('testar-ldap', ['error' => 'Erro ao testar a conexão LDAP']);
-        }
-    }
+        // $setor = '[TI]INFRA E SUPORTE';
+        // function extrairConteudo($texto) {
+        //     $posicaoAbertura = strpos($texto, '[');
+        //     $posicaoFechamento = strpos($texto, ']', $posicaoAbertura);
+        
+        //     if ($posicaoAbertura !== false && $posicaoFechamento !== false) {
+        //         return substr($texto, $posicaoFechamento + 1);
+        //     } else {
+        //         dd($texto);
+        //     }
+        // }
+       
+        // $saida = extrairConteudo($setor);
+        
 
-    protected function buscarUsuarios()
-    {
-        $search = $this->ldap->search();
-        $result = $search->whereNotNull('cn')->get(['cn']);
+        $userAd =
+        ['mail'         => $results['mail'][0],
+         'fullname'     => $results['displayname'][0],
+         'department'   => $setor,
+         'company'      => $company,
+    ];
 
-        $usuarios = [];
+        return view('/form',['userAd'=>$userAd]);
+        
+        // echo $saida; // Saída: "SUPORTE"
 
-        foreach ($result as $entry) {
-            $usuarios[] = $entry->getAttribute('cn')[0];
-        }
+        // dd($results);
 
-        return $usuarios;
+        // function showForm(){
+
+        //     return view('form');
+        // }
+    
+        // function sendForm(Request $request){
+    
+        //     $formUser = $resquest->get();
+        
+        //     // return redirect()->route('/form', ['formUser '=>$formUser]);
+        //     dd($formUser);
+        //     }
+
+        
     }
 }

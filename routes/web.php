@@ -1,7 +1,7 @@
 <?php
 use LdapRecord\Connection;
 use App\Http\Controllers\LdapController;
-use App\Http\Controllers\teste2Controller;
+// use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('layout');
+    return view('search-login');
 });
 
 Route::get('/layout', function () {
@@ -31,9 +31,11 @@ Route::get('/form', function () {
     return view('form');
 });
 
-Route::get('/data', [LdapController::class,'data']);
+// Route::get('/form', [LdapController::class,'formData']);
 
 // Route::get('/testar-ldap', [LdapController::class,'testar-ldap']);
-Route::get('/testar-ldap', [teste2Controller::class,'teste99']);
-
+Route::get('/search-result', [LdapController::class,'userSearch']);
 // Route::redirect('/layout', '/signatures/rmed');
+
+// Route::get('/form', [LdapController::class,'showForm']);
+// Route::post('/form', [LdapController::class,'sendForm']);

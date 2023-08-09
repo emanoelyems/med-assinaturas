@@ -170,20 +170,10 @@
         
         </header>
 
-            <section id="from-search" class="container m-5">
-                <form id="form-box" class="row g-3 form-box p-3" method="GET" action="{{ URL::to('/testar-ldap') }}">
-                    <div class="col-12">
-                        <label for="login" class="form-label label text-white">Login</label>
-                        <input type="login" name="login" id="login" class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="login" placeholder="nome.sobrenome">
-                    </div>
-                    <button type="submit" class="btn btn-success">Enviar</button>
-                </form>
-            </section>
 
             @yield('content')
 
 
-            {{-- <a href="{{url::to('/layout')}}">clica!</a> --}}
 
         <footer id="footer" class="container-fluid bg-black p-2 text-center fixed-bottom">
             <h5 class="text-white ass">MEDGRUPO</h5>
@@ -191,14 +181,7 @@
 
     <!-- Biblioteca html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
-    @yield('js')
-    <script>
-        async function buscarDados() {
-            const dados = await fetch("{{ URL::to('/data') }}")
-            const dadosjson = await response.json();
-            console.log(dadosjson);
-        }
-    </script>
+    
 </body>
 
 </html>
