@@ -5,7 +5,7 @@
 @section('content')
 
     <section id="form-ass" class="container m-5">
-        <form id="form-box" class="row g-3 form-box p-3" method="POST" action="/search-result">
+        <form id="form-box" class="row g-3 form-box p-3" >
             @csrf
             <div class="col-12">
                 <label for="fullname" class="form-label label text-white">Nome Completo</label>
@@ -37,37 +37,60 @@
             </div>
             <div class="col-md-6 text-white">
                 <label for="company" class="form-label label">Empresa</label>
-                {{-- <select id="company" name="company"
+                <select id="company" name="company"
                     class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
-                    <option selected>Empresa...</option>
-                    <option value="rm">RM</option>
-                    <option value="rmed">RMED</option>
-                    <option value="mederi">MEDERI</option>
-                </select> --}}
-
-                <input type="company" value="{{ $userAd['company'] }}" name="company" id="company"
-                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="company"
-                    placeholder="company">
+                    @if(isset($company))
+                        <option> {{ $userAd['company'] }} </option>
+                    @endisset
+                </select>
             </div>
 
-            <div class="form-check text-white">
-                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <div class="form-check text-white" id="option1">
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
                 <label class="form-check-label label white" for="flexRadioDefault2">
                     Assinatura Padrão
                 </label>
             </div>
-            <div class="form-check text-white">
-                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <div class="form-check text-white" id="option2">
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label label white" for="flexRadioDefault1">
                     Assinatura para Filial
                 </label>
             </div>
-            
 
+            {{-- Esconde a o Select da assinatura para Filial--}}
+            <script>
+                $(function () {
+                    $("#flexRadioDefault1").click(function () {
+                        if ($(this).is(":checked")) {
+                            $("#input-option2").show();
+                            $("#option1").hide();
+                        } else {
+                            $("#input-option2").hide();
+                            $("#flexRadioDefault2").show();
+                            $("#option1").show();
+                        }
+                    });
+                });
+            </script>
+
+            <div id="input-option2" style="display: none">
+                <label for="filial" class="form-label label text-white">Filial</label>
+                <select id="filial" name="filial"
+                    class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
+                    <option selected>Filial...</option>
+                    @if(isset($local))
+                        <option> {{ $userAd['filial'] }} </option>
+                    @endisset
+                </select>
+            </div>
+            
+            
+            <div class="col-12 m-2">
+                <button class="btn focus-ring focus-ring-light btn-outline-light" type="submit" {{ URL::to('signatures.rmed') }} >Gerar assinatura</button>
+            </div>
         </form>
-        <div class="col-12 m-2">
-            <button class="btn focus-ring focus-ring-light btn-outline-light" type="submit" >Gerar assinatura</button>
-        </div>
+        
     </section>
 
     <section id="signature" class="signature row justify-content-md-center align-items-center bg-black p-3 m-2">
@@ -100,7 +123,7 @@
         <div id="ass" class="info col text-white text-wrap">
             <h3 id="fullname" class="text-uppercase ass"> {{ $userAd['fullname'] }} </h3>
             <h4 id="email" class="fw-semibold"> {{ $userAd['mail'] }} </h4>
-            <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4>
+            {{-- <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4> --}}
             <h4 id="company" class="fw-light">  {{ $userAd['company'] }}   </h4>
             <h4 class="fw-light">  </h4>
             <h4 class="fw-light"></h4>

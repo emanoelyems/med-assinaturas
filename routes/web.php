@@ -34,7 +34,11 @@ Route::get('/form', function () {
 // Route::get('/form', [LdapController::class,'formData']);
 
 // Route::get('/testar-ldap', [LdapController::class,'testar-ldap']);
-Route::get('/search-result', [LdapController::class,'userSearch']);
+Route::get('/form', [LdapController::class,'userSearch']);
+
+
+// Route::get('/form', [LdapController::class,'showOption']);
+
 // Route::redirect('/layout', '/signatures/rmed');
 
 // Route::get('/form', [LdapController::class,'showForm']);

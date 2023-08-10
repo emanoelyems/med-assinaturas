@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
     <script src="{{ URL::asset('js/style.js') }}"></script>
 
