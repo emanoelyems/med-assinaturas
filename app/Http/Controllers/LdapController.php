@@ -59,8 +59,6 @@ class LdapController extends Controller
         }
 
 
-
-
         //O dado é exibido mesmo sendo Null
         $mail       = '';
         $fullname   = isset($results['displayname'][0]) ? $results['displayname'][0] : '';

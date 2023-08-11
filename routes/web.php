@@ -27,6 +27,10 @@ Route::get('/layout', function () {
     return view('signatures.rmed');
 });
 
+Route::get('/layout', function () {
+    return view('signatures.mederi');
+});
+
 Route::get('/form', function () {
     return view('form');
 });

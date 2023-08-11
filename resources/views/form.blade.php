@@ -10,7 +10,7 @@
             <div class="col-12">
                 <label for="fullname" class="form-label label text-white">Nome Completo</label>
                 <input type="fullname" value="{{ $userAd['fullname'] }}" name="fullname" id="fullname"
-                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="fullname"
+                    class="form-control text-white box bg-transparent focus-ring focus-ring-white"
                     placeholder="Nome completo">
             </div>
             <div class="col-md-6">
@@ -25,49 +25,52 @@
             </div>
             <div class="col-md-6">
                 <label for="department" class="form-label label text-white">Setor</label>
-                {{-- <select id="department" value="{{ $userAd['department'] }}" name="department"
-                    class="form-select box bg-transparent focus-ring focus-ring-white">
-                    <option selected>Setor...</option>
-                    <option value="suporte">Suporte TI</option>
-                    <option value="infra">Infraestrutura</option>
-                </select> --}}
                 <input type="department" value="{{ $userAd['department'] }}" name="department" id="department"
-                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="department"
-                    placeholder="department">
+                    class="form-control text-white box bg-transparent focus-ring focus-ring-white"
+                    placeholder="Setor">
             </div>
             <div class="col-md-6 text-white">
                 <label for="company" class="form-label label">Empresa</label>
-                <select id="company" name="company"
-                    class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
-                        <option selected>Empresa...</option> 
-                        <option> {{ $userAd['company'] }} </option>
-                </select>
+                <input type="company" value="{{ $userAd['company'] }}" name="company" id="company"
+                class="form-control text-white box bg-transparent focus-ring focus-ring-white" 
+                placeholder="Empresa">
             </div>
 
             <div class="form-check text-white" id="option1">
-                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="Radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                 <label class="form-check-label label white" for="flexRadioDefault2">
                     Assinatura Padrão
                 </label>
             </div>
             <div class="form-check text-white" id="option2">
-                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="Radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label label white" for="flexRadioDefault1">
                     Assinatura para Filial
                 </label>
             </div>
 
-            {{-- Esconde a o Select da assinatura para Filial--}}
+            {{-- Esconde o campo input Filial --}}
             <script>
                 $(function () {
                     $("#flexRadioDefault1").click(function () {
                         if ($(this).is(":checked")) {
                             $("#input-option2").show();
+                            $("#assFilial").show();
                             
-                        } else {
-                            $("#input-option2").hide();
-                            $("#flexRadioDefault2").show();
+                        }else {
+                            $("#input-option2").hide();                       
+                            $("#assFilial").hide();
                             $("#option1").show();
+                        }
+                    });
+                });
+                $(function () {
+                    $("#flexRadioDefault2").click(function(){
+                        if($(this).is(":checked")){
+                            $("#input-option2").hide();
+                            $("#assFilial").hide();
+                        } else{
+                            $("#input-option2").show();
                         }
                     });
                 });
@@ -75,12 +78,31 @@
 
             <div id="input-option2" style="display: none">
                 <label for="filial" class="form-label label text-white">Filial</label>
-                <select id="filial" name="filial"
-                    class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
-                    <option selected>Filial...</option>                
-                        <option> {{ $userAd['filial'] }} </option>
-                </select>
+                <input type="filial" value="{{ $userAd['filial'] }}" name="filial" id="filial"
+                    class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="filial"
+                    placeholder="Filial">
             </div>
+
+
+            <script>
+                $(document).ready(function(){
+                    $('#form-box').on('input', function(){
+                        var assFullname     = $('#fullname').val();
+                        var assCellphone    = $('#cellphone').val();
+                        var assTelephone    = $('#telephone').val();
+                        var assDepartment   = $('#department').val();
+                        var assCompany      = $('#company').val();
+                        var assFilial      = $('#filial').val();
+
+                        $('#assFullname').html(assFullname);
+                        $('#assCellphone').html(assCellphone);
+                        $('#assTelephone').html(assTelephone);
+                        $('#assDepartment').html(assDepartment);
+                        $('#assCompany').html(assCompany);
+                        $('#assFilial').html(assFilial);
+                    });
+                });
+            </script>
             
             
             <div class="col-12 m-2">
@@ -90,7 +112,24 @@
         
     </section>
 
-    <section id="signature" class="signature row justify-content-md-center align-items-center bg-black p-3 m-2">
+
+    <script>
+        $(document).ready(function () {
+           $("#company").on("input", function (){
+
+            if ($("#company") === 'rmcursosmedicos') {
+                $(".signature").css("'background-image', url('../../resources/imgs/ASE_BASE_RM_2019.jpg')");
+            }else{
+                $(".signature").css("'background-image', url('../../resources/imgs/ASE_BASE_RMED_2019.jpg')");
+            }
+        });
+        });  
+    </script>
+
+    {{-- $(".signature").css("'background-image', url('../../resources/imgs/ASE_BASE_RMED_2019.jpg')"); --}}
+
+
+    <section id="signature" class="signature row justify-content-md-center align-items-center p-3 m-2 ">
          {{-- primeiro layout de teste da assinatura  --}}
 
         <div id="asslogo" class="asslogo col-3 text-center align-middle">
@@ -118,12 +157,13 @@
             <h1 id="assname" class="assname text-white">MEDGRUPO</h1>
         </div>
         <div id="ass" class="info col text-white text-wrap">
-            <h3 id="fullname" class="text-uppercase ass"> {{ $userAd['fullname'] }} </h3>
-            <h4 id="email" class="fw-semibold"> {{ $userAd['mail'] }} </h4>
-            <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4>
-            <h4 id="company" class="fw-light">  {{ $userAd['company'] }}   </h4>
-            <h4 class="fw-light">  </h4>
-            <h4 class="fw-light"></h4>
+            <h3 id="assFullname" class="text-uppercase ass"> {{ $userAd['fullname'] }} </h3>
+            <h4 id="assMail" class="fw-semibold"> {{ $userAd['mail'] }} </h4>
+            <h4 id="assDepartment" class="fw-light"> {{ $userAd['department'] }} </h4>
+            <h4 id="assCompany" class="fw-light">  {{ $userAd['company'] }}   </h4>
+            <h4 id="assCellphone"class="fw-light">  </h4>
+            <h4 id="assTelephone"class="fw-light"></h4>
+            <h4 id="assFilial"class="fw-light"> {{ $userAd['filial'] }} </h4>
         </div>
     </section> 
 
