@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use LdapRecord\Container;
 use LdapRecord\Connection;
 use Illuminate\Routing\Controller;
+use LdapRecord\Models\ActiveDirectory\OrganizationalUnit;
 use LdapRecord\Models\Entry;
 
 
@@ -14,6 +15,20 @@ class LdapController extends Controller
 {
 
     private $connection;
+    // public function FunctionName()
+    // {
+        
+    //             // Realiza a busca das OUs
+    //             $ous = OrganizationalUnit::query()->get();
+    
+    //             $resultado = [];
+    //             foreach ($ous as $ou) {
+    //                 $resultado[] = $ou->getName();
+    //             }
+    
+    //             dd($resultado);
+        
+    // }
 
     public function __construct()
     {
@@ -33,24 +48,30 @@ class LdapController extends Controller
 
     function userSearch(Request $request)
     {
-    
         $name = $request->login;
         $connection = $this->connection;
 
         // Get all objects:
         // $objects = Entry::get();
 
-        $results = $connection->query()->where('samaccountname', 'starts_with', $name)->first();
+        if (isset($request->login)) {
+            $results = $connection->query()->where('samaccountname', 'starts_with', $name)->first();
+        }
 
 
 
-        //Ignora o Request para que o dado seja exibido mesmo sendo Null
-        // $email  = $request->except(['mail']);
 
-        // if ($request->filled(['mail'])){
-            //Trata o dado retirando o que estiver antes de '@' e depois '.' deixando apenas o nome da Empresa
-            $email = $results['mail'][0];
-            $parts = explode('@', $email);
+        //O dado é exibido mesmo sendo Null
+        $mail       = '';
+        $fullname   = isset($results['displayname'][0]) ? $results['displayname'][0] : '';
+        $setor      = '';
+        $company    = '';
+        $local      = '';
+
+        //Trata o dado retirando o que estiver antes de '@' e depois '.' deixando apenas o nome da Empresa
+        if (isset($results['mail'][0])) {
+            $mail = $results['mail'][0];
+            $parts = explode('@', $mail);
             if (count($parts) === 2) {
                 $domain = $parts[1];
                 $domainParts = explode('.', $domain);
@@ -59,79 +80,53 @@ class LdapController extends Controller
                     $company = $domainParts[0];
                 }
             }
-        // }
+        };
 
-        //Ignora o Request para que o dado seja exibido mesmo sendo Null
-        // $local  = $request->except(['physicaldeliveryofficename']);
-
-        // if ($request->filled(['physicaldeliveryofficename'])){
-            //Trata o dado retirando o que estiver antes de ']' deixando apenas o nome da Filial
+        //Trata o dado retirando o que estiver antes de ']' deixando apenas o nome da Filial
+        if (isset($results['physicaldeliveryofficename'][0])) {
             $filial = $results['physicaldeliveryofficename'][0];
-
             $parts = explode(']', $filial);
             if (count($parts) > 1) {
                 $local = trim($parts[1]);
             }
-        // }
-        
-
-
-        //Ignora o Request para que o dado seja exibido mesmo sendo Null
-        // $setor  = $request->except(['department']);
-
-            // if ($request->filled(['department'])){
-            //Trata o dado retirando o que estiver antes de ']' deixando apenas o nome do Setor
+        };
+        //Trata o dado retirando o que estiver antes de ']' deixando apenas o nome do Setor
+        if (isset($results['department'][0])) {
             $department = $results['department'][0];
-
             $parts = explode(']', $department);
             if (count($parts) > 1) {
                 $setor = trim($parts[1]);
             }
-        // }
-       
+        };
 
         $userAd =
-        ['mail'         => $results['mail'][0],
-         'fullname'     => $results['displayname'][0],
-         'filial'       => $local,
-         'department'   => $setor,
-         'company'      => $company,
-    ];
-    
+            [
+                'mail'         => $mail,
+                'fullname'     => $fullname,
+                'filial'       => $local,
+                'department'   => $setor,
+                'company'      => $company,
+            ];
+
+        return view('form', ['userAd' => $userAd]);
+
+        // dd($userAd);
 
 
-
-        return view('form',['userAd'=>$userAd]);
-
-        // dd($results);
-
-        
     }
 
-        // function showForm(){
+    // function showForm(){
 
-        //     return view('/form');
-        // }
-    
-        // function sendForm(Request $request){
-    
-        //     $formUser = $resquest->all();
-        
-        //     // return redirect()->route('/form', ['formUser '=>$formUser]);
-        //     dd($formUser);
-        //     }
+    //     return view('/form');
+    // }
 
-        // function showOption( Request $request){
+    // function sendForm(Request $request){
 
-        //     $option1 = $request->input('flexRadioDefault2');
-        //     $option2 = $request->input('flexRadioDefault1');
+    //     $formUser = $resquest->all();
 
-        //     $showDiv = false;
+    //     // return redirect()->route('/form', ['formUser '=>$formUser]);
+    //     dd($formUser);
+    //     }
 
-        //     if ($option2){
-        //         $showDiv = true;
-        //     }
-        //     return view('/form', ['showDiv'=>$showDiv]);
-        //     // dd($showDiv);
-        // }
+
 }

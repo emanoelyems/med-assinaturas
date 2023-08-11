@@ -36,6 +36,7 @@ Route::get('/form', function () {
 // Route::get('/testar-ldap', [LdapController::class,'testar-ldap']);
 Route::get('/form', [LdapController::class,'userSearch']);
 
+Route::get('/teste', [LdapController::class,'FunctionName']);
 
 // Route::get('/form', [LdapController::class,'showOption']);
 

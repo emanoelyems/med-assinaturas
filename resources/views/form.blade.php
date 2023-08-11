@@ -39,9 +39,8 @@
                 <label for="company" class="form-label label">Empresa</label>
                 <select id="company" name="company"
                     class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
-                    @if(isset($company))
+                        <option selected>Empresa...</option> 
                         <option> {{ $userAd['company'] }} </option>
-                    @endisset
                 </select>
             </div>
 
@@ -64,7 +63,7 @@
                     $("#flexRadioDefault1").click(function () {
                         if ($(this).is(":checked")) {
                             $("#input-option2").show();
-                            $("#option1").hide();
+                            
                         } else {
                             $("#input-option2").hide();
                             $("#flexRadioDefault2").show();
@@ -78,10 +77,8 @@
                 <label for="filial" class="form-label label text-white">Filial</label>
                 <select id="filial" name="filial"
                     class="form-select box bg-transparent focus-ring focus-ring-white input-bg-black">
-                    <option selected>Filial...</option>
-                    @if(isset($local))
+                    <option selected>Filial...</option>                
                         <option> {{ $userAd['filial'] }} </option>
-                    @endisset
                 </select>
             </div>
             
@@ -123,7 +120,7 @@
         <div id="ass" class="info col text-white text-wrap">
             <h3 id="fullname" class="text-uppercase ass"> {{ $userAd['fullname'] }} </h3>
             <h4 id="email" class="fw-semibold"> {{ $userAd['mail'] }} </h4>
-            {{-- <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4> --}}
+            <h4 id="department" class="fw-light"> {{ $userAd['department'] }} </h4>
             <h4 id="company" class="fw-light">  {{ $userAd['company'] }}   </h4>
             <h4 class="fw-light">  </h4>
             <h4 class="fw-light"></h4>
