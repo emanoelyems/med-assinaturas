@@ -113,18 +113,4 @@ class LdapController extends Controller
 
     }
 
-    // function showForm(){
-
-    //     return view('/form');
-    // }
-
-    // function sendForm(Request $request){
-
-    //     $formUser = $resquest->all();
-
-    //     // return redirect()->route('/form', ['formUser '=>$formUser]);
-    //     dd($formUser);
-    //     }
-
-
 }

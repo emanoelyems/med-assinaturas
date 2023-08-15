@@ -176,7 +176,7 @@
 
 
 
-        <footer id="footer" class="container-fluid bg-black p-2 text-center fixed-bottom">
+        <footer id="footer" class="container-fluid bg-black p-2 text-center ">
             <h5 class="text-white ass">MEDGRUPO</h5>
         </footer>
 

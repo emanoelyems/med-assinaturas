@@ -89,29 +89,32 @@
   .signature{
     width: 600px;
     height:200px;
-    gap:2rem;
+    gap:1rem;
     /* border: 1px solid rgba(254, 254, 254, 0.10); */
     /* background: radial-gradient(33.90% 146.69% at 0% 0%, rgba(9, 9, 9, 0.20) 0%, rgba(156, 156, 156, 0.20) 100%), radial-gradient(27.29% 119.14% at 111.04% -0.00%, rgba(156, 156, 156, 0.30) 0%, rgba(9, 9, 9, 0.00) 100%), linear-gradient(0deg, #090909 0%, #090909 100%), rgba(9, 9, 9, 0.50);    margin: 0; */
-    padding: 0;
+    background-color: #FEFEFE;
 }
-
 .mederi{
   background-image: url(../imgs/ASE_BASE_MEDERI_2019.jpg);
   background-repeat: no-repeat;
 }
 .mederiInfo{
-  position: absolute;  
-  margin: 6rem 4.94rem 1.98rem 16.9rem;
-
+  color: #504A34;
 }
 
 .medwriters{
   background-image: url(../imgs/ASE_BASE_MEDWRITERS_2019.jpg);
   background-repeat: no-repeat;
 }
+.medwritersInfo{
+  color: #00010E;
+}
 .medycorp{
   background-image: url(../imgs/ASE_BASE_MEDYCORP_2019.jpg);
   background-repeat: no-repeat;
+}
+.medycorpInfo{
+  color:#888985;
 }
 .medyklin{
   background-image: url(../imgs/ASE_BASE_MEDYKLIN_2019.jpg);
@@ -125,15 +128,21 @@
   background-image: url(../imgs/ASE_BASE_RM_2019.jpg);
   background-repeat: no-repeat;
 }
+.rmInfo{
+  color: #081A2A;
+}
 .rmed{
   background-image: url(../imgs/ASE_BASE_RMED_2019.jpg);
   background-repeat: no-repeat;
 }
+.rmedInfo{
+  color: #D52229;
+}
   
-  .assInfo{
+  /* .assInfo{
     font-family: 'Poppins', sans-serif;
   }
   
   .assName{
     font-family: 'Archivo Black', sans-serif;
-  }
+  } */
