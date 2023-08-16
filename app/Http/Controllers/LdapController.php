@@ -33,11 +33,11 @@ class LdapController extends Controller
     public function __construct()
     {
         $connection = new Connection([
-            'hosts' => ['10.47.103.7'],
-            'port' => 389,
-            'base_dn' => 'OU=Medgrupo,DC=medbarra,DC=com,DC=br',
-            'username' => 'assinaturas@medbarra.com.br',
-            'password' => '!Q@W#E4r5t6y',
+            'hosts' => [env('LDAP_HOST',false)],
+            'port' => env('LDAP_PORT',false),
+            'base_dn' => env('LDAP_BASE_DN',false),
+            'username' => env('LDAP_USERNAME',false),
+            'password' => env('LDAP_PASSWORD',false),
         ]);
 
         // Add the connection into the container:

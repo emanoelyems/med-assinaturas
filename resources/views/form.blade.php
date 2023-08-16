@@ -59,24 +59,24 @@
 
     </section>
 
-    <section id="signature" class="signature row row-cols-2 align-items-center p-1">
+    <section id="signature" class="signature align-items-center p-1">
         {{-- primeiro layout de teste da assinatura  --}}
-        <div id="asslogo" class="asslogo col-auto text-center">
-           <h1>Teste</h1>
-        </div>
-        <div id="ass" class="col text-wrap display-1">
-            <h3 id="assFullname" class="text-uppercase"></h3>
-            <h4 id="assMail" class="fw-semibold">{{ $userAd['mail'] }}</h4>
-            <h4 id="assDepartment" class="fw-light"></h4>
-            <h4 id="assCompany" class="fw-light"></h4>
-            <h4 id="assCellphone"class="fw-light"></h4>
-            <h4 id="assTelephone"class="fw-light"></h4>
-            <h4 id="assFilial"class="fw-light"></h4>
+        {{-- <div id="asslogo" class="asslogo col-4 text-center">
+            <img src="{{ URL::asset('imgs/rm.png') }}" alt="logo">
+        </div> --}}
+        <div id="ass" class="text-wrap">
+            <p id="assFullname" class="text-uppercase mb-0 fs-6"></p>
+            <p id="assMail" class="fw-semibold mb-0 fs-6">{{ $userAd['mail'] }}</p>
+            <p id="assDepartment" class="fw-light mb-0 fs-6"></p>
+            <p id="assCompany" class="fw-light mb-0 fs-6"></p>
+            <p id="assCellphone"class="fw-light mb-0 fs-6"></p>
+            <p id="assTelephone"class="fw-light mb-0 fs-6"></p>
+            <p id="assFilial"class="fw-light mb-0 fs-6"></p>
         </div>
     </section>
 
-    <div class="container m-5 ">
-        <button class="justify-content-end btn focus-ring focus-ring-light btn-outline-light"
+    <div class="container mb-4">
+        <button class="justify-content-end btn focus-ring focus-ring-light btn-outline-light mb-4"
             onclick="downloadImage()">Baixar Assinatura</button>
     </div>
 
@@ -104,13 +104,14 @@
                     $("#assFilial").hide();
                 } else {
                     $("#input-option2").show();
+                    $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca | RJ |CEP:22640102");
                 }
             });
         });
     </script>
 
     <script>
-        const signatureElement = $(".asslogo");
+        const signatureElement = $(".signature");
 
         function bgChange() {
             const selectedCompany = $("#company").val();
