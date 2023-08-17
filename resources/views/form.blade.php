@@ -13,16 +13,16 @@
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white"
                     placeholder="Nome completo">
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <label for="cellphone" class="form-label label text-white">Celular</label>
                 <input type="text" class="form-control text-white box bg-transparent focus-ring focus-ring-white"
                     id="cellphone" placeholder="55 021 912345678">
-            </div>
-            <div class="col-md-6">
+            </div> --}}
+            {{-- <div class="col-md-6">
                 <label for="telephone" class="form-label label text-white">Telefone</label>
                 <input type="text" class="form-control text-white box bg-transparent focus-ring focus-ring-white"
                     id="telephone" placeholder="55 021 12345678">
-            </div>
+            </div> --}}
             <div class="col-md-6">
                 <label for="department" class="form-label label text-white">Setor</label>
                 <input type="department" value="{{ $userAd['department'] }}" name="department" id="department"
@@ -64,14 +64,14 @@
         {{-- <div id="asslogo" class="asslogo col-4 text-center">
             <img src="{{ URL::asset('imgs/rm.png') }}" alt="logo">
         </div> --}}
-        <div id="ass" class="text-wrap">
-            <p id="assFullname" class="text-uppercase mb-0 fs-6"></p>
-            <p id="assMail" class="fw-semibold mb-0 fs-6">{{ $userAd['mail'] }}</p>
-            <p id="assDepartment" class="fw-light mb-0 fs-6"></p>
-            <p id="assCompany" class="fw-light mb-0 fs-6"></p>
-            <p id="assCellphone"class="fw-light mb-0 fs-6"></p>
-            <p id="assTelephone"class="fw-light mb-0 fs-6"></p>
-            <p id="assFilial"class="fw-light mb-0 fs-6"></p>
+        <div id="ass" class="ass text-wrap float-end">
+            <p id="assFullname" class="text-uppercase "></p>
+            <p id="assDepartment" class="text-uppercase"></p>
+            <p id="assMail" class="">{{ $userAd['mail'] }}</p>
+            <p id="assCompany" class=""></p>
+            {{-- <p id="assCellphone"class=""></p> --}}
+            {{-- <p id="assTelephone"class=""></p> --}}
+            <p id="assFilial"class=""></p>
         </div>
     </section>
 
@@ -112,64 +112,41 @@
 
     <script>
         const signatureElement = $(".signature");
+        const assElement = $(".ass");
 
         function bgChange() {
             const selectedCompany = $("#company").val();
-            signatureElement.removeClass("rm rmInfo rmed rmedInfo medyn medynInfo medyklin medyklinInfo medycorp medycorpInfo medwriters medwritersInfo mederi mederiInfo")
+            signatureElement.removeClass("rmed medwriters medgrupo")
+            assElement.removeClass("rmedInfo medwritersInfo medgrupoInfo")
 
-            if (selectedCompany === 'rmcursosmedicos') {
-                signatureElement.addClass("rm");
-                $("#ass").addClass("rmInfo");
-                $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca | RJ |CEP:22640102");
-
-            } else if (selectedCompany === 'rmedcursosmedicos'){
+            if (selectedCompany === 'rmedcursosmedicos'){
                 signatureElement.addClass("rmed");
                 $("#ass").addClass("rmedInfo");
                 $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
 
-            }
-            else if(selectedCompany === 'medyn'){
-                signatureElement.addClass("medyn");
-                $("#ass").addClass("medynInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
-
-
-            }else if(selectedCompany === 'medyklin'){
-                signatureElement.addClass("medyklin");
-                $("#ass").addClass("medyklinInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
-
-
-            }else if(selectedCompany === 'medycorp'){
-                signatureElement.addClass("medycorp");
-                $("#ass").addClass("medycorpInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
-
-
-            }else if(selectedCompany === 'medwriters'){
+            } else if (selectedCompany === 'medwriters'){
                 signatureElement.addClass("medwriters");
                 $("#ass").addClass("medwritersInfo");
                 $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
 
-
             }else{
-                signatureElement.addClass("mederi");
-                $("#ass").addClass("mederiInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
+                signatureElement.addClass("medgrupo");
+                $("#ass").addClass("medgrupoInfo");
             }
+
         }
 
         function infoAss() {
             var assFullname = $('#fullname').val();
-            var assCellphone = $('#cellphone').val();
-            var assTelephone = $('#telephone').val();
+            // var assCellphone = $('#cellphone').val();
+            // var assTelephone = $('#telephone').val();
             var assDepartment = $('#department').val();
             var assCompany = $('#company').val();
             var assFilial = $('#filial').val();
 
             $('#assFullname').html(assFullname);
-            $('#assCellphone').html(assCellphone);
-            $('#assTelephone').html(assTelephone);
+            // $('#assCellphone').html(assCellphone);
+            // $('#assTelephone').html(assTelephone);
             $('#assDepartment').html(assDepartment);
             $('#assCompany').html(assCompany);
             $('#assFilial').html(assFilial);
@@ -191,6 +168,7 @@
                 bgChange()
             });
 
+          
             infoAss()
             bgChange()
 

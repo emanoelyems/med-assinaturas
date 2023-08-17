@@ -57,7 +57,7 @@ class LdapController extends Controller
         if (isset($request->login)) {
             $results = $connection->query()->where('samaccountname', 'starts_with', $name)->first();
         }
-
+       
 
         //O dado é exibido mesmo sendo Null
         $mail       = '';
@@ -107,8 +107,8 @@ class LdapController extends Controller
             ];
 
         return view('form', ['userAd' => $userAd]);
-
-        // dd($userAd);
+        // dd($results);
+      
 
 
     }
