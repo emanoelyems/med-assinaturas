@@ -48,6 +48,8 @@ class LdapController extends Controller
 
     function userSearch(Request $request)
     {
+
+
         $name = $request->login;
         $connection = $this->connection;
 

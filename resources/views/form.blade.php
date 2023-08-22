@@ -67,11 +67,11 @@
         <div id="ass" class="ass text-wrap float-end">
             <p id="assFullname" class="text-uppercase "></p>
             <p id="assDepartment" class="text-uppercase"></p>
+            <p id="assFilial"class=""></p>
             <p id="assMail" class="">{{ $userAd['mail'] }}</p>
             <p id="assCompany" class=""></p>
             {{-- <p id="assCellphone"class=""></p> --}}
             {{-- <p id="assTelephone"class=""></p> --}}
-            <p id="assFilial"class=""></p>
         </div>
     </section>
 
@@ -89,10 +89,12 @@
                 if ($(this).is(":checked")) {
                     $("#input-option2").show();
                     $("#assFilial").show();
+                    $("#assDepartment").hide();
 
                 } else {
                     $("#input-option2").hide();
                     $("#assFilial").hide();
+                    $("#assDepartment").show();
                     $("#option1").show();
                 }
             });
@@ -102,9 +104,10 @@
                 if ($(this).is(":checked")) {
                     $("#input-option2").hide();
                     $("#assFilial").hide();
+                    $("#assDepartment").show();
                 } else {
                     $("#input-option2").show();
-                    $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca | RJ |CEP:22640102");
+                    $("#assDepartment").hide();
                 }
             });
         });
@@ -127,7 +130,7 @@
             } else if (selectedCompany === 'medwriters'){
                 signatureElement.addClass("medwriters");
                 $("#ass").addClass("medwritersInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
+                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra  | RJ |CEP:22631003");
 
             }else{
                 signatureElement.addClass("medgrupo");
@@ -141,14 +144,14 @@
             // var assCellphone = $('#cellphone').val();
             // var assTelephone = $('#telephone').val();
             var assDepartment = $('#department').val();
-            var assCompany = $('#company').val();
+            // var assCompany = $('#company').val();
             var assFilial = $('#filial').val();
 
             $('#assFullname').html(assFullname);
             // $('#assCellphone').html(assCellphone);
             // $('#assTelephone').html(assTelephone);
             $('#assDepartment').html(assDepartment);
-            $('#assCompany').html(assCompany);
+            // $('#assCompany').html(assCompany);
             $('#assFilial').html(assFilial);
         }
 
