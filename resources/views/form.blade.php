@@ -51,7 +51,7 @@
 
             <div id="input-option2" style="display: none">
                 <label for="filial" class="form-label label text-white">Filial</label>
-                <input type="filial" value="{{ $userAd['filial'] }}" name="filial" id="filial"
+                <input type="filial" value="{{ $userAd['filial'] }} name="filial" id="filial"
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="filial"
                     placeholder="Filial">
             </div>
@@ -59,17 +59,27 @@
 
     </section>
 
-    <section id="signature" class="signature align-items-center p-1">
+    <section id="signature" class="signature p-1 row">
         {{-- primeiro layout de teste da assinatura  --}}
         {{-- <div id="asslogo" class="asslogo col-4 text-center">
             <img src="{{ URL::asset('imgs/rm.png') }}" alt="logo">
         </div> --}}
-        <div id="ass" class="ass text-wrap float-end">
-            <p id="assFullname" class="text-uppercase "></p>
-            <p id="assDepartment" class="text-uppercase"></p>
-            <p id="assFilial"class=""></p>
-            <p id="assMail" class="">{{ $userAd['mail'] }}</p>
-            <p id="assCompany" class=""></p>
+        <div id="ass" class="ass row-cols-auto text-wrap p-0">
+            <div class="boxAss">
+                <p id="assFullname" class="text-uppercase"></p>
+            </div>
+            <div class="boxAss">
+                <p id="assDepartment" class="text-uppercase"></p>
+            </div> 
+            <div class="boxAss">
+                <p id="assFilial"class=""></p>
+            </div>
+            <div class="boxAss">
+                <p id="assMail" class="">{{ $userAd['mail'] }}</p>
+            </div>
+            <div class="boxAss">
+                <p id="assCompany" class=""></p>
+            </div>
             {{-- <p id="assCellphone"class=""></p> --}}
             {{-- <p id="assTelephone"class=""></p> --}}
         </div>
@@ -96,6 +106,7 @@
                     $("#assFilial").hide();
                     $("#assDepartment").show();
                     $("#option1").show();
+                    $("#assDepartment").show();
                 }
             });
         });
@@ -125,12 +136,12 @@
             if (selectedCompany === 'rmedcursosmedicos'){
                 signatureElement.addClass("rmed");
                 $("#ass").addClass("rmedInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra da Tijuca | RJ |CEP:22631003");
+                $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca - Rio de janeiro-RJ |CEP:22640102");
 
             } else if (selectedCompany === 'medwriters'){
                 signatureElement.addClass("medwriters");
                 $("#ass").addClass("medwritersInfo");
-                $('#assCompany').html("Av. das Américas 3301, blc 04, sls 224/226 | Barra  | RJ |CEP:22631003");
+                $('#assCompany').html("Av. das Américas 3434, blc 02, sls 3005 | Barra da Tijuca - Rio de janeiro-RJ |CEP:22640102");
 
             }else{
                 signatureElement.addClass("medgrupo");
