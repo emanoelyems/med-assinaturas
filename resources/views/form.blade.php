@@ -59,26 +59,26 @@
 
     </section>
 
-    <section id="signature" class="signature p-1 row">
+    <section id="signature" class="signature p-1 ">
         {{-- primeiro layout de teste da assinatura  --}}
         {{-- <div id="asslogo" class="asslogo col-4 text-center">
             <img src="{{ URL::asset('imgs/rm.png') }}" alt="logo">
         </div> --}}
-        <div id="ass" class="ass row-cols-auto text-wrap p-0">
+        <div id="ass" class="ass row">
             <div class="boxAss">
-                <p id="assFullname" class="text-uppercase"></p>
+                <p id="assFullname" class="text-uppercase fw-bold"></p>
             </div>
             <div class="boxAss">
-                <p id="assDepartment" class="text-uppercase"></p>
+                <p id="assDepartment" class="text-uppercase "></p>
             </div> 
             <div class="boxAss">
                 <p id="assFilial"class=""></p>
             </div>
             <div class="boxAss">
-                <p id="assMail" class="">{{ $userAd['mail'] }}</p>
+                <p id="assMail" class="fst-italic">{{ $userAd['mail'] }}</p>
             </div>
             <div class="boxAss">
-                <p id="assCompany" class=""></p>
+                <p id="assCompany" class="text-wrap"></p>
             </div>
             {{-- <p id="assCellphone"class=""></p> --}}
             {{-- <p id="assTelephone"class=""></p> --}}
@@ -136,12 +136,12 @@
             if (selectedCompany === 'rmed'){
                 signatureElement.addClass("rmed");
                 $("#ass").addClass("rmedInfo");
-                $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca - Rio de janeiro-RJ |CEP:22640102");
+                $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
 
             } else if (selectedCompany === 'medwriters'){
                 signatureElement.addClass("medwriters");
                 $("#ass").addClass("medwritersInfo");
-                $('#assCompany').html("Av. das Américas 3434, blc 02, sls 3005 | Barra da Tijuca - Rio de janeiro-RJ |CEP:22640102");
+                $('#assCompany').html("Av. das Américas 3434, blc 02, sls 305|Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
 
             }else{
                 signatureElement.addClass("medgrupo");
