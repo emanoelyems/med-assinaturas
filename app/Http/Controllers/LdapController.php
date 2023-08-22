@@ -82,6 +82,10 @@ class LdapController extends Controller
             }
         };
 
+        if($company === 'rmedcursosmedicos'){
+            $company = 'rmed';
+        };
+
         //Trata o dado retirando o que estiver antes de ']' deixando apenas o nome da Filial
         if (isset($results['physicaldeliveryofficename'][0])) {
             $filial = $results['physicaldeliveryofficename'][0];

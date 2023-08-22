@@ -51,7 +51,7 @@
 
             <div id="input-option2" style="display: none">
                 <label for="filial" class="form-label label text-white">Filial</label>
-                <input type="filial" value="{{ $userAd['filial'] }} name="filial" id="filial"
+                <input type="filial" value="{{ $userAd['filial'] }}" name="filial" id="filial"
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="filial"
                     placeholder="Filial">
             </div>
@@ -133,7 +133,7 @@
             signatureElement.removeClass("rmed medwriters medgrupo")
             assElement.removeClass("rmedInfo medwritersInfo medgrupoInfo")
 
-            if (selectedCompany === 'rmedcursosmedicos'){
+            if (selectedCompany === 'rmed'){
                 signatureElement.addClass("rmed");
                 $("#ass").addClass("rmedInfo");
                 $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca - Rio de janeiro-RJ |CEP:22640102");
