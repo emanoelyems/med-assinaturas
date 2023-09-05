@@ -34,14 +34,15 @@
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white" placeholder="Empresa">
             </div>
 
-            <div class="form-check text-white" id="option1">
+
+            <div class="col-12 form-check text-white" id="option1">
                 <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="Radio"
                     name="flexRadioDefault" id="flexRadioDefault2" checked>
                 <label class="form-check-label label white" for="flexRadioDefault2">
                     Assinatura Padrão
                 </label>
             </div>
-            <div class="form-check text-white" id="option2">
+            <div class="col-12 form-check text-white" id="option2">
                 <input class="form-check-input bg-transparent focus-ring focus-ring-light" type="Radio"
                     name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label label white" for="flexRadioDefault1">
@@ -55,6 +56,18 @@
                     class="form-control text-white box bg-transparent focus-ring focus-ring-white" id="filial"
                     placeholder="Filial">
             </div>
+
+            <div class="col-12 text-white">
+                <label for="matriz" id="matrizLabel" class="form-label label">Matriz</label>
+                <select id="matriz" class="form-select form-control text-white box bg-transparent focus-ring focus-ring-white" aria-label="Matriz">
+                    <option selected>Matriz</option>
+                    <option value="londres" id="londres">Londres</option>
+                    <option value="garden" id="garden">Garden</option>
+                    <option value="simonsen" id="simonsen">Simonsen</option>
+                    <option value="taguara" id="taguara">Taguara</option>
+                  </select>
+            </div>
+
         </form>
 
     </section>
@@ -64,7 +77,7 @@
         {{-- <div id="asslogo" class="asslogo col-4 text-center">
             <img src="{{ URL::asset('imgs/rm.png') }}" alt="logo">
         </div> --}}
-        <div id="ass" class="ass row">
+        <div id="ass" class="ass col">
             <div class="boxAss">
                 <p id="assFullname" class="text-uppercase fw-bold"></p>
             </div>
@@ -78,11 +91,12 @@
                 <p id="assMail" class="fst-italic">{{ $userAd['mail'] }}</p>
             </div>
             <div class="boxAss">
-                <p id="assCompany" class="text-wrap"></p>
+                <p id="assMatriz" class="text-wrap"></p>
             </div>
             {{-- <p id="assCellphone"class=""></p> --}}
             {{-- <p id="assTelephone"class=""></p> --}}
-        </div>
+            </div>
+            
     </section>
 
     <div class="container mb-4">
@@ -136,12 +150,13 @@
             if (selectedCompany === 'rmed'){
                 signatureElement.addClass("rmed");
                 $("#ass").addClass("rmedInfo");
-                $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
+                
+                // $('#assCompany').html("Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
 
             } else if (selectedCompany === 'medwriters'){
                 signatureElement.addClass("medwriters");
                 $("#ass").addClass("medwritersInfo");
-                $('#assCompany').html("Av. das Américas 3434, blc 02, sls 305|Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
+                // $('#assCompany').html("Av. das Américas 3434, blc 02, sls 305|Barra da Tijuca Rio de janeiro-RJ|CEP:22640102");
 
             }else{
                 signatureElement.addClass("medgrupo");
@@ -150,19 +165,47 @@
 
         }
 
+        function matrizAdress() {
+            
+            const assMatriz = $('#matriz').val();
+
+
+            switch (assMatriz) {
+                case 'londres':
+                    var adress = "Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102"
+                    break;
+
+                case 'garden':
+                    var adress = "Av. das Américas 3255, Barra Garden, sls 216 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102"
+                    break;
+
+                case 'simonsen':
+                    var adress = "Av. das Américas 3434, bl 02, sls 305 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102"
+                    break;
+
+                case 'taguara':
+                    var adress = "Estrada dos Bandeirantes 1700, bl 02, Galpão 112 | Taguara Rio de janeiro-RJ|CEP:22775109"
+                    break;
+
+                default:
+                    var adress = "Av. das Américas 3500, blc 01, sls 706 | Barra da Tijuca Rio de janeiro-RJ|CEP:22640102"
+                    break;
+            }
+                $('#assMatriz').html(adress);
+        }
+    
+
         function infoAss() {
             var assFullname = $('#fullname').val();
             // var assCellphone = $('#cellphone').val();
             // var assTelephone = $('#telephone').val();
             var assDepartment = $('#department').val();
-            // var assCompany = $('#company').val();
             var assFilial = $('#filial').val();
 
             $('#assFullname').html(assFullname);
             // $('#assCellphone').html(assCellphone);
             // $('#assTelephone').html(assTelephone);
             $('#assDepartment').html(assDepartment);
-            // $('#assCompany').html(assCompany);
             $('#assFilial').html(assFilial);
         }
 
@@ -182,10 +225,14 @@
                 bgChange()
             });
 
+            $('#matriz').on('input', function() {
+                matrizAdress()
+            });
+
           
             infoAss()
             bgChange()
-
+           
             $('#form-box').on('input', function() {
                 infoAss()
             });

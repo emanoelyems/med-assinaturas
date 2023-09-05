@@ -128,12 +128,16 @@
   font-family: 'Archivo Black', sans-serif;
 }
 
-.medwritersInfo >.boxAss:nth-child(2){
+.medgrupoInfo >.boxAss:nth-child(2){
   margin-bottom: 0.4rem !important;
 }
 
-.medwritersInfo >.boxAss:nth-child(4){
+.medgrupoInfo >.boxAss:nth-child(4){
   margin-bottom: 0.4rem !important;
+}
+
+.medgrupoInfo >.boxAss:nth-child(5){
+  width: 20rem !important;
 }
 
 
@@ -142,53 +146,22 @@
 .medwriters{
   background-image: url(../imgs/ASE_BASE_MEDWRITERS_2019.jpg);
   background-repeat: no-repeat;
-  column-count: 2;
 }
 
 .medwritersInfo{
   font-size:0.65rem;
   color:#3B4046;
+  align-items: end;
+  flex-direction: column;
+  justify-content:flex-start;
 }
 
 .medwritersInfo >.boxAss{
   width: 17rem;
-  position: relative;
+  /* position: relative; */
 }
 
 .medwritersInfo >.boxAss:first-child{
-  top:8rem;
-  left: 13rem;
-}
-
-.medwritersInfo >.boxAss:nth-child(2){
-  top:8rem;
-  left: 13rem;
-}
-
-.medwritersInfo >.boxAss:nth-child(3){
-  top:8rem;
-  left: 13rem;
-}
-
-.medwritersInfo >.boxAss:nth-child(4){
-  top:8rem;
-  left: 13rem;
-}
-
-.medwritersInfo >.boxAss:nth-child(5){
-  top:3.2rem;
-  left: 2rem;
-}
-
-.medwriters >.boxAss:nth-child(4){
-  align-items:center;
-}
-
-.medwritersInfo >.boxAss>p{
-  margin-bottom: 0;
-}
-
-.medwritersInfo > .boxAss:first-child{
   color:#034D72;
 }
 
@@ -196,6 +169,25 @@
   color:#0A1A28;
 }
 
+.medwritersInfo >.boxAss:first-child,
+.medwritersInfo >.boxAss:nth-child(2),
+.medwritersInfo >.boxAss:nth-child(3),
+.medwritersInfo >.boxAss:nth-child(4){
+    margin-left: 13.5rem !important;
+    float:left;
+    
+}
+
+.medwritersInfo >.boxAss:nth-child(5){
+  float: right;
+  display: flex;
+  max-width: 16rem;
+  padding-right: 1rem;
+}
+
+.medwritersInfo >.boxAss>p{
+  margin-bottom: 0;
+}
 
 /* Layout Assinatura RMED */
 .rmed{
