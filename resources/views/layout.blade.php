@@ -8,6 +8,7 @@
     <meta name="description" content="MED ASSINATURAS">
     <meta name="author" content="Emanoely Santos">
     
+    <link rel="icon" type="image/png" href="imgs/logo-favicon.png">
     <link rel="stylesheet" href="{{ URL::asset('css\style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
